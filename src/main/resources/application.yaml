@@ -1,0 +1,31 @@
+spring:
+  server:
+    port: 8080
+    servlet:
+      context-path: api
+  application:
+    name: bancocuscatlan
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    database:
+      platform: org.hibernate.dialect.PostgresSQLDialect
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/db_banco}
+    username: ${SPRING_DATASOURCE_USERNAME:ANGEL}
+    password: ${SPRING_DATASOURCE_PASSWORD:ANGEL1}
+
+logging:
+  level:
+    com:
+      bancocuscatlan: INFO
+
+springdoc:
+  api-docs:
+    enabled: true
+    path: /v3/api-docs
+  swagger-ui:
+    enabled: true
+    path: /swagger-ui.html
+

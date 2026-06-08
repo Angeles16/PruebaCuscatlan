@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:latest
+    container_name: bancocuscatlan-db
+    environment:
+      POSTGRES_USER: ANGEL
+      POSTGRES_PASSWORD: ANGEL1
+      POSTGRES_DB: db_banco
+    ports:
+      - "5432:5432"
+    # Cambiamos el montaje a /var/lib/postgresql para evitar conflictos
+    volumes:
+      - postgres_data:/var/lib/postgresql
+    networks:
+      - banco-network
+
+  app:
+    build: .
+    container_name: bancocuscatlan-app
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/db_banco
+      SPRING_DATASOURCE_USERNAME: ANGEL
+      SPRING_DATASOURCE_PASSWORD: ANGEL1
+      SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT: org.hibernate.dialect.PostgreSQLDialect
+    networks:
+      - banco-network
+
+networks:
+  banco-network:
+    driver: bridge
+
+volumes:
+  postgres_data:
