@@ -31,4 +31,10 @@ Por motivos de seguridad, todos los endpoints están protegidos. Para interactua
 * **Header Name:** `X-API-KEY`
 * **Value:** `BANCO-CUSCATLAN-2026-SECRET`
 
+### Testing
+Ejecucion de test 
+```bash
+    mvn test
+```
+
 ---

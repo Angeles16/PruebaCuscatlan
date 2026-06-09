@@ -30,20 +30,28 @@ public class ClienteServicesTest {
     @InjectMocks
     private ClienteServices clienteServices;
 
+
     @Test
     void crearCliente_DebeLanzarExcepcion_SiDpiYaExiste() {
         ClienteDto dto = new ClienteDto();
-        dto.setDpi("12345");
-        when(clienteRepository.findByDpi("12345")).thenReturn(Optional.of(new ClienteEntity()));
+        dto.setDpi("3094848550406");
+        dto.setTelefono("12345678");
+        dto.setEmail("test@test.com");
+        dto.setNombre("Nombre");
 
+        when(clienteRepository.findByDpi("3094848550406")).thenReturn(Optional.of(new ClienteEntity()));
         assertThrows(BusinessException.class, () -> clienteServices.crearCliente(dto));
     }
 
     @Test
     void crearCliente_DebeRetornarExito_SiDpiEsNuevo() {
         ClienteDto dto = new ClienteDto();
-        dto.setDpi("99999");
-        when(clienteRepository.findByDpi("99999")).thenReturn(Optional.empty());
+        dto.setDpi("3094848550406");
+        dto.setTelefono("12345678");
+        dto.setEmail("test@test.com");
+        dto.setNombre("Nombre");
+
+        when(clienteRepository.findByDpi(anyString())).thenReturn(Optional.empty());
 
         String resultado = clienteServices.crearCliente(dto);
 

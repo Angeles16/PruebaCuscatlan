@@ -36,17 +36,6 @@ public class ClienteServices implements IClienteServices {
             throw new BusinessException("El cliente ya existe, intente con otro DPI.");
         }
 
-        if (!clientedto.getDpi().matches("\\d{13}")) {
-            throw new BusinessException("El DPI debe contener exactamente 13 números.");
-        }
-        if (!clientedto.getTelefono().matches("\\d{8}")) {
-            throw new BusinessException("El teléfono debe contener exactamente 8 números.");
-        }
-        String emailRegex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$";
-        if (!clientedto.getEmail().matches(emailRegex)) {
-            throw new BusinessException("El formato del correo electrónico no es válido.");
-        }
-
         ClienteEntity newClient = new ClienteEntity();
         newClient.setNombre(clientedto.getNombre());
         newClient.setDpi(clientedto.getDpi());
