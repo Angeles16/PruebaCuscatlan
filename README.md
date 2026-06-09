@@ -22,7 +22,8 @@ El proyecto utiliza Docker para garantizar un entorno consistente.
   * **Contraseña:** ANGEL1
 
 ## Documentación y Testing (Swagger)
-Se agrego elementos de documentación interactiva:
+La API se encuentra documentada a través de Swagger. En esta herramienta es posible visualizar todos los endpoints disponibles, así como la información requerida para su ejecución (parámetros y cuerpo de la petición).
+
 **[http://localhost:8080/swagger-ui/index.html](http://localhost:8080/swagger-ui/index.html)**
 
 ### Seguridad (API Key)
@@ -30,6 +31,8 @@ Por motivos de seguridad, todos los endpoints están protegidos. Para interactua
 
 * **Header Name:** `X-API-KEY`
 * **Value:** `BANCO-CUSCATLAN-2026-SECRET`
+
+En swagger se debe adjuntar en cualquiera de los enpoits el value de X-API-KEY, esta se encuentra en la parte superior derecha de cada controlador con un icono de candado.
 
 ### Testing
 Ejecucion de test 
